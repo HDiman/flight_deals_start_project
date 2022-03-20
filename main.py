@@ -21,15 +21,15 @@ print(response)
 print(response["prices"][0]["city"])
 
 # Google Sheet: adding new information to sheet CDG
-sheet_endpoint = sheet_endpoint
+sheet_endpoint = sheet_endpoint + "/2"
 body = {
-    "prices": {
+    "price": {
         'city': 'Paris',
         "iataCode": "CDG",
         'lowestPrice': 54,
         'id': 2
     }
 }
-response_sheet = requests.post(url=sheet_endpoint, json=body)
+response_sheet = requests.put(url=sheet_endpoint, json=body)
 response = response_sheet.json()
 print(response)

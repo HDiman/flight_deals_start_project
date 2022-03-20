@@ -18,3 +18,4 @@ rows = {
     },
 }
 
+print(rows['1']["city"])

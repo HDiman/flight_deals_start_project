@@ -1,3 +1,5 @@
+import requests
+
 #This file will need to use the DataManager,FlightSearch, FlightData,
 # NotificationManager classes to achieve the program requirements.
 
@@ -12,7 +14,21 @@ Tequila Flight Search API Documentation - https://tequila.kiwi.com/portal/docs/t
 Twilio SMS API - https://www.twilio.com/docs/sms
 """
 
-# Google Sheet with information about flights
-url = "https://api.sheety.co/afd998d332f85c1909b2035741e296da/flightDeals/prices"
+# Google Sheet: getting information from sheet
+sheet_endpoint = "https://api.sheety.co/afd998d332f85c1909b2035741e296da/flightDeals/prices"
+response_sheet = requests.get(url=sheet_endpoint)
+response = response_sheet.json()
+print(response["prices"][0])
+print(response["prices"][0]["city"])
 
-# with
+# Google Sheet: adding new information to sheet
+sheet_endpoint = "https://api.sheety.co/afd998d332f85c1909b2035741e296da/flightDeals/prices"
+
+response_sheet = requests.get(url=sheet_endpoint)
+response = response_sheet.json()
+print(response["prices"][0])
+
+# response_sheet = requests.get(url=sheet_endpoint, headers=headers)
+
+
+

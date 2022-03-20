@@ -24,10 +24,7 @@ print(response["prices"][0]["city"])
 sheet_endpoint = sheet_endpoint + "/2"
 body = {
     "price": {
-        'city': 'Paris',
         "iataCode": "CDG",
-        'lowestPrice': 54,
-        'id': 2
     }
 }
 response_sheet = requests.put(url=sheet_endpoint, json=body)

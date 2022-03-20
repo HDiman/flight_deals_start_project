@@ -1,5 +1,5 @@
-import requests
 
+# Dictionary instead of Google Sheet
 rows = {
     "1": {
         "city": "Kaliningrad",

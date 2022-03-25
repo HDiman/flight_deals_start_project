@@ -10,8 +10,18 @@ param = "http://map.aviasales.ru/supported_directions.json?origin_iata=LED&one_w
 '''
 Параметры запроса
 
-origin_iata — IATA-код аэропорта/города, из которого ищутся билеты. IATA-код указывается буквами верхнего регистра, например MOW.
+origin_iata — IATA-код аэропорта/города, из которого ищутся билеты. 
+IATA-код указывается буквами верхнего регистра, например MOW.
 one_way — «true» для перелетов в одну сторону, «false» — для туда-обратно.
 locale — язык поиска.
 
 '''
+
+# Directions
+sheet_endpoint = "https://api.sheety.co/afd998d332f85c1909b2035741e296da/flightDeals/prices"
+
+# Google Sheet: getting information from sheet
+response_sheet = requests.get(url=sheet_endpoint)
+response = response_sheet.json()
+print(response)
+print(response["prices"][0]["city"])

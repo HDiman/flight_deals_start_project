@@ -3,19 +3,23 @@ from dotenv import load_dotenv
 import os
 from data_manager import *
 from pprint import pprint
+from datetime import datetime
 
+# -- Loading virtual env
 load_dotenv()
 
-a_city = rows['1']["iataCode"]
-b_city = rows['2']["iataCode"]
+# -- Adding new values
+a_city = rows['1']["iataCode"] # MOW
+b_city = rows['2']["iataCode"] # KGD
 
-print(a_city)
-print(b_city)
+# -- Creating today's date
+shortDate = datetime.today().strftime('%Y-%m-%d')
+print(shortDate)
 
-# X-Access-Token
+# -- Getting inf about flights
 API_token = os.getenv("API_token")
 headers = {'x-access-token': API_token}
-# URL
+
 end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
 params = {
     "origin": a_city,
@@ -28,7 +32,7 @@ params = {
     "limit": "10",
     }
 
-response_end = requests.get(url=end_point, params=params, headers=headers)
-response = response_end.json()['data']
-pprint(response)
+# response_end = requests.get(url=end_point, params=params, headers=headers)
+# response = response_end.json()['data']
+# pprint(response)
 

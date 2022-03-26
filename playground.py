@@ -66,8 +66,8 @@ async def async_func():
 
 
 async def main():
-    # async_func()  # этот код ничего не вернет
-    await async_func()
+    task = asyncio.create_task(async_func())
+    await task
 
 
 asyncio.run(main())

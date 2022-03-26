@@ -1,4 +1,13 @@
-import requests
+from data_manager import *
+
+print(rows['1']["city"])
+print(rows['2']["city"])
+
+# URL search through aviasales
+# url = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin=MOW&destination=DXB&currency=usd&departure_at=2022-03-01&return_at=2022-03-10&sorting=price&direct=true&limit=10&token=РазместитеЗдесьВашТокен"
+
+
+# import requests
 
 #This file will need to use the DataManager,FlightSearch, FlightData,
 # NotificationManager classes to achieve the program requirements.

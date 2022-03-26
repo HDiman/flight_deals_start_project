@@ -16,7 +16,7 @@ b_city = rows['2']["iataCode"] # KGD
 lowest_price = []
 
 # Creating loop for 187 days
-for i in range(31):
+for i in range(187):
     # -- Creating today's date and next days
     date = datetime.now() + timedelta(days=i+1)
     search_day = date.strftime('%Y-%m-%d')

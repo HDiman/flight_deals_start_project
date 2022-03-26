@@ -2,6 +2,7 @@ import requests
 from dotenv import load_dotenv
 import os
 from data_manager import *
+from pprint import pprint
 
 load_dotenv()
 
@@ -29,5 +30,5 @@ params = {
 
 response_end = requests.get(url=end_point, params=params, headers=headers)
 response = response_end.json()['data']
-print(response)
+pprint(response)
 

@@ -1,7 +1,49 @@
-from data_manager import *
+# from dotenv import load_dotenv
+# import os
+#
+# # -- Loading virtual env
+# load_dotenv()
+#
+# # -- API_token from .env
+# API_token = os.getenv("API_token")
+# headers = {'x-access-token': API_token}
 
-print(rows['1']["city"])
-print(rows['2']["city"])
+# -- Getting inf about flights
+# API_token = os.getenv("API_token")
+# headers = {'x-access-token': API_token}
+#
+# end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
+# params = {
+#     "origin": a_city,
+#     "destination": b_city,
+#     "currency": "rub",
+#     "departure_at": "2022-03-27",
+#     "return_at": "2022-03-29",
+#     "sorting": "price",
+#     "direct": "true",
+#     "limit": "",
+# }
+
+# response_end = requests.get(url=end_point, params=params, headers=headers)
+# response = response_end.json()['data']
+# pprint(response)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from data_manager import *
+#
+# print(rows['1']["city"])
+# print(rows['2']["city"])
 
 # URL search through aviasales
 # url = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin=MOW&destination=DXB&currency=usd&departure_at=2022-03-01&return_at=2022-03-10&sorting=price&direct=true&limit=10&token=РазместитеЗдесьВашТокен"

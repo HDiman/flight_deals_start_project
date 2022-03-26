@@ -18,8 +18,10 @@ lowest_price = []
 # Creating loop for 187 days
 for i in range(187):
     # -- Creating today's date and next days
-    date = datetime.now() + timedelta(days=i+1)
-    search_day = date.strftime('%Y-%m-%d')
+    date_a = datetime.now() + timedelta(days=i+1)
+    date_b = datetime.now() + timedelta(days=i+2)
+    start_day = date_a.strftime('%Y-%m-%d')
+    back_day = date_b.strftime('%Y-%m-%d')
     # print(search_day)
 
     # -- Getting inf about flights
@@ -31,13 +33,13 @@ for i in range(187):
         "currency": "rub",
         "origin": a_city,
         "destination": b_city,
-        "departure_at": search_day,
+        "departure_at": start_day,
         "return_at": "",
         "direct": "true",
         "limit": "",
         "sorting": "price",
         }
-
+    # Find price back
     response_end = requests.get(url=end_point, params=params, headers=headers)
     response = response_end.json()['data'][0]['price']
     lowest_price.append(response)

@@ -5,6 +5,7 @@ print(rows['2']["city"])
 
 # URL search through aviasales
 # url = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin=MOW&destination=DXB&currency=usd&departure_at=2022-03-01&return_at=2022-03-10&sorting=price&direct=true&limit=10&token=РазместитеЗдесьВашТокен"
+# url = f"https://api.travelpayouts.com/aviasales/v3/prices_for_dates?origin={a_city}&destination={b_city}&currency=rub&departure_at=2022-03-26&return_at=2022-03-29&sorting=price&direct=true&limit=10&token={token}"
 
 
 # import requests

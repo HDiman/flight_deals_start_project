@@ -13,10 +13,10 @@ load_dotenv()
 # -- Adding new values
 a_city = rows['1']["iataCode"] # MOW
 b_city = rows['2']["iataCode"] # KGD
+lowest_price = []
 
-
-# Creating loop for 30 days
-for i in range(181):
+# Creating loop for 187 days
+for i in range(31):
     # -- Creating today's date and next days
     date = datetime.now() + timedelta(days=i+1)
     search_day = date.strftime('%Y-%m-%d')
@@ -40,7 +40,8 @@ for i in range(181):
 
     response_end = requests.get(url=end_point, params=params, headers=headers)
     response = response_end.json()['data'][0]['price']
-    if response < 2000:
-        print(search_day)
-        pprint(response)
+    lowest_price.append(response)
+
+print(lowest_price)
+pprint(min(lowest_price))
 

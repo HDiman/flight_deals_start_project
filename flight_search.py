@@ -13,7 +13,7 @@ class FlightSearch:
         self.fl_data = FlightData()
         self.airport_code = DataManager()
         self.back_day = ""
-        self.good_price_day = datetime.now()
+        self.second_start = 0
 
     def search_flight(self, days):
         # Creating loop for 187 days
@@ -21,8 +21,8 @@ class FlightSearch:
         try:
             for i in range(days):
                 # -- Creating today's date and next days
-                self.start_day = self.fl_data.search_day(i+1)
-
+                self.start_day = self.fl_data.search_day(i + 1 + self.second_start)
+                # print(f"dates: {self.start_day}")
                 # -- Getting inf about flights
                 API_token = os.getenv("API_token")
                 headers = {'x-access-token': API_token}
@@ -50,13 +50,14 @@ class FlightSearch:
         self.b_city = end
         self.search_flight(days)
 
-        print(self.ticket_prices)
+        # print(self.ticket_prices)
         print(f"{len(self.ticket_prices)} days")
         good_price = min(self.ticket_prices)
         print(f"Lowest price is: {good_price} rub.")
 
-        # Finding index of the lowest value in list
-        index_min = int(min(range(len(self.ticket_prices)), key=self.ticket_prices.__getitem__))
-        self.good_price_day = self.fl_data.search_day(index_min+1)
+        # Finding second_start of the lowest value in list
+        self.index_min = int(min(range(len(self.ticket_prices)), key=self.ticket_prices.__getitem__))
+        self.good_price_day = self.fl_data.search_day(self.index_min + 1 + self.second_start)
+        self.second_start = self.index_min
         print(f"Date for flight is: {self.good_price_day}")
 

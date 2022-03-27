@@ -1,8 +1,6 @@
 import requests
 from dotenv import load_dotenv
 import os
-from data_manager import *
-from pprint import pprint
 from datetime import datetime
 from datetime import timedelta
 
@@ -23,7 +21,6 @@ class FlightSearch:
             self.date_b = datetime.now() + timedelta(days=i+2)
             self.start_day = self.date_a.strftime('%Y-%m-%d')
             self.back_day = self.date_b.strftime('%Y-%m-%d')
-            # print(search_day)
 
             # -- Getting inf about flights
             API_token = os.getenv("API_token")
@@ -40,7 +37,7 @@ class FlightSearch:
                 "limit": "",
                 "sorting": "price",
             }
-            # Find price back
+            # Find price
             response_end = requests.get(url=end_point, params=params, headers=headers)
             response = response_end.json()['data'][0]['price']
             self.lowest_price.append(response)

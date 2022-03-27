@@ -1,31 +1,37 @@
-for i in range(187):
-    # -- Creating today's date and next days
-    date_a = datetime.now() + timedelta(days=i+1)
-    date_b = datetime.now() + timedelta(days=i+2)
-    start_day = date_a.strftime('%Y-%m-%d')
-    back_day = date_b.strftime('%Y-%m-%d')
-    # print(search_day)
+# # -- Adding new values
+# a_city = rows['1']["iataCode"] # MOW
+# b_city = rows['2']["iataCode"] # KGD
+#
 
-    # -- Getting inf about flights
-    API_token = os.getenv("API_token")
-    headers = {'x-access-token': API_token}
 
-    end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
-    params = {
-        "currency": "rub",
-        "origin": a_city,
-        "destination": b_city,
-        "departure_at": start_day,
-        "return_at": "",
-        "direct": "true",
-        "limit": "",
-        "sorting": "price",
-    }
-    # Find price back
-    response_end = requests.get(url=end_point, params=params, headers=headers)
-    response = response_end.json()['data'][0]['price']
-    lowest_price.append(response)
-
+# for i in range(187):
+#     # -- Creating today's date and next days
+#     date_a = datetime.now() + timedelta(days=i+1)
+#     date_b = datetime.now() + timedelta(days=i+2)
+#     start_day = date_a.strftime('%Y-%m-%d')
+#     back_day = date_b.strftime('%Y-%m-%d')
+#     # print(search_day)
+#
+#     # -- Getting inf about flights
+#     API_token = os.getenv("API_token")
+#     headers = {'x-access-token': API_token}
+#
+#     end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
+#     params = {
+#         "currency": "rub",
+#         "origin": a_city,
+#         "destination": b_city,
+#         "departure_at": start_day,
+#         "return_at": "",
+#         "direct": "true",
+#         "limit": "",
+#         "sorting": "price",
+#     }
+#     # Find price back
+#     response_end = requests.get(url=end_point, params=params, headers=headers)
+#     response = response_end.json()['data'][0]['price']
+#     lowest_price.append(response)
+#
 
 
 

@@ -1,28 +1,53 @@
+import requests
+from dotenv import load_dotenv
+import os
+from data_manager import *
+from pprint import pprint
+from datetime import datetime
+from datetime import timedelta
+
+# -- Loading virtual env
+load_dotenv()
+
 class FlightSearch:
-    #This class is responsible for talking to the Flight Search API.
-    pass
+    def __init__(self):
+        self.a_city = "MOW"
+        self.b_city = "KGD"
+        self.lowest_price = []
 
-'''
-Цены
-Запрос
+    def search_flight(self, days):
+        # Creating loop for 187 days
+        for i in range(days):
+            # -- Creating today's date and next days
+            self.date_a = datetime.now() + timedelta(days=i+1)
+            self.date_b = datetime.now() + timedelta(days=i+2)
+            self.start_day = self.date_a.strftime('%Y-%m-%d')
+            self.back_day = self.date_b.strftime('%Y-%m-%d')
+            # print(search_day)
 
-Метод: GET.
+            # -- Getting inf about flights
+            API_token = os.getenv("API_token")
+            headers = {'x-access-token': API_token}
 
-URL: http://map.aviasales.ru/prices.json?origin_iata=LED&period=2017-02-01:season&direct=true&one_way=false&no_visa=true&schengen=true&need_visa=true&locale=ru&min_trip_duration_in_days=13&max_trip_duration_in_days=15
+            end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
+            params = {
+                "currency": "rub",
+                "origin": self.a_city,
+                "destination": self.b_city,
+                "departure_at": self.start_day,
+                "return_at": self.back_day,
+                "direct": "true",
+                "limit": "",
+                "sorting": "price",
+            }
+            # Find price back
+            response_end = requests.get(url=end_point, params=params, headers=headers)
+            response = response_end.json()['data'][0]['price']
+            self.lowest_price.append(response)
 
-Параметры запроса
 
-origin_iata — IATA-код пункта отправления. IATA-код указывается буквами верхнего регистра, например, MOW.
-period — период дат для поиска:
-month — отображать только перелёты в указанном месяце (необходимо указывать дату начала месяца, например, 2017-01-01);
-season — отображать перелёты, входящие в сезон, указанного месяца (зима, весна, лето, осень);
-year — весь год (дату можно не указывать).
-direct — указывает на наличие перелётов без пересадок.
-one_way — «true» для перелетов в одну сторону, «false» для туда-обратно.
-no_visa — виза для русских не нужна.
-schengen — нужна виза в шенген.
-need_visa — нужна виза для русских.
-locale — язык поиска.
-min_trip_duration_in_days — минимальная продолжительность поездки (дней).
-max_trip_duration_in_days — максимальная продолжительность поездки (дней).
-'''
+# ticket_price = FlightSearch()
+# ticket_price.search_flight(30)
+#
+# print(ticket_price.lowest_price)
+# pprint(min(ticket_price.lowest_price))

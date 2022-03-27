@@ -19,7 +19,7 @@ from_city = '1'
 to_city = '5'
 getting_price_and_date(a=from_city, b=to_city)
 
-# # From Kaliningrad to Moscow
-# from_city = '1'
-# to_city = '5'
-# getting_price_and_date(a=from_city, b=to_city)
+# From Kaliningrad to Moscow
+from_city = '1'
+to_city = '5'
+getting_price_and_date(a=from_city, b=to_city)

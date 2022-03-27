@@ -19,26 +19,29 @@ class FlightSearch:
 
     def search_flight(self, days):
         # Creating loop for 187 days
-        for i in range(days):
-            # -- Creating today's date and next days
-            self.start_day = self.fl_data.search_day(i+1)
+        try:
+            for i in range(days):
+                # -- Creating today's date and next days
+                self.start_day = self.fl_data.search_day(i+1)
 
-            # -- Getting inf about flights
-            API_token = os.getenv("API_token")
-            headers = {'x-access-token': API_token}
+                # -- Getting inf about flights
+                API_token = os.getenv("API_token")
+                headers = {'x-access-token': API_token}
 
-            end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
-            params = {
-                "currency": "rub",
-                "origin": self.a_city,
-                "destination": self.b_city,
-                "departure_at": self.start_day,
-                "return_at": self.back_day,
-                "direct": "true",
-                "limit": "",
-                "sorting": "price",
-            }
-            # Find price
-            response_end = requests.get(url=end_point, params=params, headers=headers)
-            response = response_end.json()['data'][0]['price']
-            self.lowest_price.append(response)
+                end_point = "https://api.travelpayouts.com/aviasales/v3/prices_for_dates"
+                params = {
+                    "currency": "rub",
+                    "origin": self.a_city,
+                    "destination": self.b_city,
+                    "departure_at": self.start_day,
+                    "return_at": self.back_day,
+                    "direct": "true",
+                    "limit": "",
+                    "sorting": "price",
+                }
+                # Find price
+                response_end = requests.get(url=end_point, params=params, headers=headers)
+                response = response_end.json()['data'][0]['price']
+                self.lowest_price.append(response)
+        except IndexError:
+            pass

@@ -22,7 +22,3 @@ class DataManager:
                 "lowest_price": "2000",
             },
         }
-
-# # -- Adding new values
-# a_city = rows['1']["iataCode"] # MOW
-# b_city = rows['2']["iataCode"] # KGD

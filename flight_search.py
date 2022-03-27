@@ -12,8 +12,6 @@ class FlightSearch:
     def __init__(self):
         self.fl_data = FlightData()
         self.airport_code = DataManager()
-        self.a_city = self.airport_code.rows['1']["iataCode"]
-        self.b_city = self.airport_code.rows['2']["iataCode"]
         self.lowest_price = []
         self.back_day = ""
 
@@ -45,3 +43,12 @@ class FlightSearch:
                 self.lowest_price.append(response)
         except IndexError:
             pass
+
+    def one_way(self, start, end, days):
+        self.a_city = start
+        self.b_city = end
+        self.search_flight(days)
+
+        print(self.lowest_price)
+        print(f"{len(self.lowest_price)} days")
+        print(f"Lowest price is: {min(self.lowest_price)} rub.")

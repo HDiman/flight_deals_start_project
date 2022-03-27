@@ -12,11 +12,11 @@ class FlightSearch:
     def __init__(self):
         self.fl_data = FlightData()
         self.airport_code = DataManager()
-        self.lowest_price = []
         self.back_day = ""
 
     def search_flight(self, days):
         # Creating loop for 187 days
+        self.lowest_price = []
         try:
             for i in range(days):
                 # -- Creating today's date and next days
@@ -37,7 +37,7 @@ class FlightSearch:
                     "limit": "",
                     "sorting": "price",
                 }
-                # Find price
+                # Find price through requests
                 response_end = requests.get(url=end_point, params=params, headers=headers)
                 response = response_end.json()['data'][0]['price']
                 self.lowest_price.append(response)
@@ -49,6 +49,6 @@ class FlightSearch:
         self.b_city = end
         self.search_flight(days)
 
-        print(self.lowest_price)
+        # print(self.lowest_price)
         print(f"{len(self.lowest_price)} days")
         print(f"Lowest price is: {min(self.lowest_price)} rub.")

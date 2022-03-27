@@ -5,9 +5,12 @@ fl_search = FlightSearch()
 dt_manager = DataManager()
 days_to_search = 365
 
-for i in range(4):
-    start = dt_manager.rows[str(i+1)]['iataCode']
-    end = dt_manager.rows['5']['iataCode']
+from_city = '1'
+where_city = '5'
 
-    fl_search.one_way(start=start, end=end, days=days_to_search)
-    print(f"Flight from {dt_manager.rows[str(i+1)]['city']} to {dt_manager.rows['5']['city']}")
+# Cheapest flight ticket from Moscow Kaliningrad
+start = dt_manager.rows[from_city]['iataCode']
+end = dt_manager.rows[where_city]['iataCode']
+
+fl_search.one_way(start=start, end=end, days=days_to_search)
+print(f"Flight from {dt_manager.rows[str(from_city)]['city']} to {dt_manager.rows[where_city]['city']}")

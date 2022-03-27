@@ -16,7 +16,7 @@ class FlightSearch:
 
     def search_flight(self, days):
         # Creating loop for 187 days
-        self.lowest_price = []
+        self.ticket_prices = []
         try:
             for i in range(days):
                 # -- Creating today's date and next days
@@ -40,7 +40,7 @@ class FlightSearch:
                 # Find price through requests
                 response_end = requests.get(url=end_point, params=params, headers=headers)
                 response = response_end.json()['data'][0]['price']
-                self.lowest_price.append(response)
+                self.ticket_prices.append(response)
         except IndexError:
             pass
 
@@ -49,6 +49,13 @@ class FlightSearch:
         self.b_city = end
         self.search_flight(days)
 
-        # print(self.lowest_price)
-        print(f"{len(self.lowest_price)} days")
-        print(f"Lowest price is: {min(self.lowest_price)} rub.")
+        print(self.ticket_prices)
+        print(f"{len(self.ticket_prices)} days")
+        good_price = min(self.ticket_prices)
+        print(f"Lowest price is: {good_price} rub.")
+
+        # Finding index of the lowest value in list
+        index_min = int(min(range(len(self.ticket_prices)), key=self.ticket_prices.__getitem__))
+        good_price_day = self.fl_data.search_day(index_min+1)
+        print(f"Date for flight is: {good_price_day}")
+

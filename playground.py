@@ -30,7 +30,7 @@
 #     # Find price back
 #     response_end = requests.get(url=end_point, params=params, headers=headers)
 #     response = response_end.json()['data'][0]['price']
-#     lowest_price.append(response)
+#     ticket_prices.append(response)
 #
 
 

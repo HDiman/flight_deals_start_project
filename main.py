@@ -3,7 +3,7 @@ from data_manager import *
 
 fl_search = FlightSearch()
 dt_manager = DataManager()
-days_to_search = 20
+days_to_search = 30
 
 def getting_price_and_date(a, b):
     # Cheapest flight ticket from A to B
@@ -12,6 +12,7 @@ def getting_price_and_date(a, b):
 
     fl_search.one_way(start=start, end=end, days=days_to_search)
     print(f"Flight from {dt_manager.rows[str(from_city)]['city']} to {dt_manager.rows[to_city]['city']}")
+
 
 # From Moscow to Kaliningrad
 from_city = '1'

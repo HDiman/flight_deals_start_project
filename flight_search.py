@@ -58,6 +58,6 @@ class FlightSearch:
         # Finding second_start of the lowest value in list
         self.index_min = int(min(range(len(self.ticket_prices)), key=self.ticket_prices.__getitem__))
         self.good_price_day = self.fl_data.search_day(self.index_min + 1 + self.second_start)
-        self.second_start = self.index_min
+        self.second_start += self.index_min
         print(f"Date for flight is: {self.good_price_day}")
 

@@ -7,7 +7,8 @@ class NotificationManager:
     # TWILIO_AUTH_TOKEN = "4ab07e79e03f068471cfef379e1f4586"
     # account_sid = os.environ[f'{TWILIO_ACCOUNT_SID}']
     # auth_token = os.environ[f'{TWILIO_AUTH_TOKEN}']
-
+    MY_LAT = 55.751244
+    MY_LON = 37.618423
 
     account_sid = "AC2ebf1800e3ef4d2e3211e227bc96e04b"
     auth_token = "4ab07e79e03f068471cfef379e1f4586"

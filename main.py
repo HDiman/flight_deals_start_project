@@ -3,7 +3,7 @@ from data_manager import *
 
 fl_search = FlightSearch()
 dt_manager = DataManager()
-days_to_search = 300
+days_to_search = 500
 
 def getting_price_and_date(a, b):
     # Cheapest flight ticket from A to B

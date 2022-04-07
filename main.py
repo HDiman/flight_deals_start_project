@@ -16,10 +16,10 @@ def getting_price_and_date(a, b):
 
 # From Moscow to Kaliningrad
 from_city = '1'
-to_city = '5'
+to_city = '7'
 getting_price_and_date(a=from_city, b=to_city)
 
 # From Kaliningrad to Moscow
 from_city = '5'
-to_city = '1'
+to_city = '7'
 getting_price_and_date(a=from_city, b=to_city)
